@@ -1,0 +1,7 @@
+hello world
+
+
+
+
+#output creates and goes to braille
+#will have to erase braille.txt every-time
