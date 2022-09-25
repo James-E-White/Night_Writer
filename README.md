@@ -142,3 +142,8 @@ all characters
 00..00..0.
 .....0...0
 00.000.000
+
+
+def translator(letter)
+  @alphabet.select {|letters| letters.find {|eng, braille| eng  == letter}}[0].values[0]
+end

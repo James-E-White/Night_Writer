@@ -4,9 +4,9 @@ class Dictionary
 
   def initialize
     @alphabet = {
-    'a' => [["0."],[".."],[".."]],
-    'b' => [["0."],["0."],[".."]],
-    # 'c' => [["00"],[".."],[".."]],
+    'a' => "0.....",
+    'b' => "0.0...",
+    'c' => "00...."
     # 'd' => [["00"],[".0"],[".."]],
     # 'e' => [["0."],[".0"],[".."]],
     # 'f' => [["00"],["0."],[".."]],
@@ -30,12 +30,25 @@ class Dictionary
     # 'x' => [["00"],[".."],["00"]],
     # 'y' => [["00"],[".0"],["00"]],
     # 'z' => [["0."],[".0"],["00"]],
-    # ' ' => [[".."],[".."],[".."]]
+     #' ' => "......"
   }
 
   end
 
   def translator(letter)
-    @alphabet.select {|letters| letters.find {|eng, braille| eng  == letter}}[0].values[0]
+    #Want the method to translate one character to braille.
+    #out put in braille.txt
+    #i need to take my letter argument
+    #match it to a key in my dictionary hash
+    #if letter == my dictionary key than
+    #  print the value
+    @alphabet.find do |character, braille|
+     if letter == character
+     return braille
+   #  else
+   # "poop"
+   #  end
   end
+ end
+ end
 end
