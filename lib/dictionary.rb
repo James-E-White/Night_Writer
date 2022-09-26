@@ -1,10 +1,8 @@
 class Dictionary
   attr_reader :alphabet
-
-
-  def initialize(alphabet)
-    @alphabet = {
-    'a' => "0.....",
+  def initialize
+    #@word = word.downcase
+    @alphabet = {'a' => "0.....",
     'b' => "0.0...",
     'c' => "00....",
     "d" => "00.0..",
@@ -35,23 +33,30 @@ class Dictionary
 
   end
 
-  def translator(letter)
-    @alphabet.find do |character, braille|
-     if letter == character
-       return braille
+  def translator(text)
+    words = []
+    letters = text.chars
+    letters.each do |letter|
+     @alphabet.each do |character, braille|
+      if letter == character
+        words << braille
+      end
+     end
     end
-   end
+    words.join("")
   end
 
-  def stack_braille(letter)
-    braille_letter = translator(letter)
-    first_line = braille_letter.slice(0..1)
-    second_line = braille_letter.slice(2..3)
-    third_line = braille_letter.slice(4..5)
+  def stack_braille(text)
+    words = translator(text)
+    first_line = words.slice(0..1)
+    second_line = words.slice(2..3)
+    third_line = words.slice(4..5)
     first_line.insert(2, "\n")
     second_line.insert(2, "\n")
     (first_line + second_line + third_line)
+
   end
+
 end
 
 
