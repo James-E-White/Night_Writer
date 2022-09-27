@@ -69,10 +69,20 @@ class Dictionary
 
    def deconstructor(character)
      write_english = ""
+     convert_braille(character)
     @alphabet.invert.map do |braille, letter|
-      require "pry";binding.pry
       return letter if character == braille
-    end
-  end
 
+     end
+   end
+
+   def convert_braille(text)
+      x = []
+     text.split.map do |row|
+       x << row.slice(0..1)
+       
+       require "pry";binding.pry
+
+     end
+   end
 end
