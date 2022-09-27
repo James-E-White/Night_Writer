@@ -1,35 +1,50 @@
 require './lib/dictionary'
 #Maybe not have methods maybe just have the i/o here for coverage.
-class NightWriter
-  attr_reader :read_file,
-              :write_file #output of what i want to be in braille
+english_translator = Dictionary.new
+handle = File.open(ARGV[0], 'r')
+message_text = handle.read
 
-  def initialize
-    @read_file = read_file #File.open(message_file_path, 'r')
-    @write_file = write_file #File.open(braille_file_path, 'w')
-  end
+char_nums = message_text.length
+braille_writer = File.open(ARGV[1], 'w')
 
-  def reader
-    file = File.open(@read_file, mode)
-    message_text = file.read
-    file.close
-    message_text
-  end
+puts "CREATED #{ARGV[1]} CONTAINING #{char_nums} CHARACTERS"
+braille_writer.write(english_translator.write_braille(message_text))
 
-   def writer
-    # incoming_txt = file_reader(@message, "r")
-    new_file = File.open(write_file, "w")
-    new_file.write(write_braille)
-    new_file.close
-    puts "Created '#{file_path}' containing #{"message.txt".length} characters"
-  end
 
-  def translate_to_braille
-    translate_to_braille = @write_braille
-    read_file_txt << write_braille
-    require "pry";binding.pry
-  end
-end
+
+# class NightWriter
+#   attr_reader :read_file,
+#               :write_file #output of what i want to be in braille
+#
+#   def initialize
+#     @read_file = read_file #File.open(message_file_path, 'r')
+#     @write_file = write_file #File.open(braille_file_path, 'w')
+#   end
+#
+#   def reader
+#     file = File.open(@read_file, mode)
+#     message_text = file.read
+#     require "pry";binding.pry
+#     file.close
+#     message_text
+#   end
+#
+#    def writer
+#     # incoming_txt = file_reader(@message, "r")
+#     new_file = File.open(write_file, "w")
+#     new_file.write(write_braille)
+#     new_file.close
+#     puts "Created '#{file_path}' containing #{"message.txt".length} characters"
+#   end
+#
+#   def translate_to_braille
+#     @alphabet = Dictionary.new
+#     translation = @write_braille
+#      write_file_contents.chars.each do |letter|
+#     read_file_txt << write_braille
+#   end
+#  end
+# end
 
 #night_writer = NightWriter.new
 #night_writer.reader(ARGV[0], 'r')
