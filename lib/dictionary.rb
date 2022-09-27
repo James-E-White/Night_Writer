@@ -30,7 +30,7 @@ class Dictionary
     "z" => "0..000",
     " " => "......"
      }
-
+   @braille_to_english_alphabet = alphabet.invert
   end
 
 
@@ -64,19 +64,8 @@ class Dictionary
        end
 
      stacked_braille
-     
+
    end
 
 end
-   # def split_lines(text)
-   #   braille_that_is_stacked = write_braille(text)
-   #   if braille_that_is_stacked.length < 40
-   #     return braille_that_is_stacked
-   #   else
-   #
-   #
-   #     # split_lines.map do |divide|
-   #       @braille << lines.split("")
-   #     end
-   #   return_braille
-   # end
+   
