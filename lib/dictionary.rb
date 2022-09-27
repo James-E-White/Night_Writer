@@ -33,6 +33,7 @@ class Dictionary
 
   end
 
+
   def translator(text)
     words = []
     letters = text.chars
@@ -43,29 +44,33 @@ class Dictionary
       end
      end
     end
-    words.join("")
+    words
   end
 
-  def stack_braille(text)
-    words = translator(text)
-    first_line = words.slice(0..1)
-    second_line = words.slice(2..3)
-    third_line = words.slice(4..5)
-    first_line.insert(2, "\n")
-    second_line.insert(2, "\n")
-    (first_line + second_line + third_line)
+  def write_braille(text)
+    braille = translator(text)
+    row1 = []
+    row2 = []
+    row3 = []
+    braille.each do |letters|
+     row1 << letters[0..1]
+     row2 << letters[2..3]
+     row3 << letters[4..5]
+    end
+    stacked_braille = "#{row1.join}\n"+"#{row2.join}\n"+"#{row3.join}"
+     stacked_braille
+   end
 
-  end
+   def split_lines(text)
+     braille_that_is_stacked = write_braille(text)
+     if braille_that_is_stacked.length < 40
+       return braille_that_is_stacked
+     else
 
-end
 
-
-
-
-  #def translator(letter)
-  #I want the method to translate one character to braille.
-  #out put in braille.txt
-  #I need to take my letter argument
-  #match it to a key in my dictionary hash
-  #if letter == my dictionary key than
-  #  print the value
+       # split_lines.map do |divide|
+         @braille << lines.split("")
+       end
+     return_braille
+   end
+ end
