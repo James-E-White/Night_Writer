@@ -68,7 +68,8 @@ class Dictionary
    end
 
    def deconstructor(character)
-    @alphabet.invert.map do |letter, braille|
+     write_english = ""
+    @alphabet.invert.map do |braille, letter|
       require "pry";binding.pry
       return letter if character == braille
     end

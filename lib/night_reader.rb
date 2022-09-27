@@ -8,4 +8,4 @@ nums_to_char = message_text.length
 english_writer = File.open(ARGV[1], 'w')
 
 puts "Created #{ARGV[1]} Containing #{nums_to_char} Characters"
-english_writer.write(deconstructor.english_writer(message_text))
+english_writer.write(deconstructor.deconstructor(message_text))
