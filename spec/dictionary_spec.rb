@@ -19,18 +19,36 @@ RSpec.describe Dictionary do
     ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."])
      end
 
-   describe '#stack_braille' do
+     describe '#stack_braille' do
     it "will return the braille letter in 2 by 3 stack" do
-     expect(@dictionary.write_braille("hello world")).to eq(
-       "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...")
+      expect(@dictionary.translator("hello world")).to eq(
+     ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."])
       end
+    end
       #no wider than 40 Braille characters (80 dots) wide.
     describe '#split_lines' do
-      it 'will split the lines of write braille if it exceeds 40 braille characters' do
-     expect(@dictionary.split_lines("hello world hello world hello world hello world hello world hello world hello world hello world")).to eq(
-       "0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0..00.0.0.00..0.0.0.....0.........0.0.0....00.0.0.........0.0.0..00.0.0.........0.0.0....00.0.0.........0.0.0....00.0.0...")
-    end
-  end
+    it 'will split the lines of write braille if it exceeds 40 braille characters' do
+        expected = "0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.
+00.00.0..0..00.0000..0..00.00.0..0..00.0
+....0.0.0....00.0.0.........0.0.0....00.
+0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.
+000..0..00.00.0..0..00.0000..0..00.00.0.
+0.0.........0.0.0....00.0.0.........0.0.
+0....00.0.0.00..0.0.0.0.0....00.0.0.00..
+.0..00.0000..0..00.00.0..0..00.0000..0..
+0....00.0.0.........0.0.0....00.0.0.....
+0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.
+00.00.0..0..00.0000..0..00.00.0..0..00.0
+....0.0.0....00.0.0.........0.0.0....00.
+0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.
+000..0..00.00.0..0..00.0000..0..00.00.0.
+0.0.........0.0.0....00.0.0.........0.0.
+0....00.0.0.00
+.0..00.0000..0
+0....00.0.0..."
+        expect(@dictionary.write_braille("hello world hello world hello world hello world hello world hello world hello world hello world hello world")).to eq(expected)
+        end
  end
+
 end
 #{}"helloworldhelloworldhelloworldhelloworldhello world"

@@ -52,15 +52,22 @@ class Dictionary
     row1 = []
     row2 = []
     row3 = []
+    stacked_braille = ""
     braille.each do |letters|
      row1 << letters[0..1]
      row2 << letters[2..3]
      row3 << letters[4..5]
     end
-    stacked_braille = "#{row1.join}\n"+"#{row2.join}\n"+"#{row3.join}"
+       while row1.length > 0
+        stacked_braille += (row1.shift(20).join + "\n" + row2.shift(20).join + "\n" + row3.shift(20).join)
+        stacked_braille += "\n" if row1.length > 0
+       end
+
      stacked_braille
+     
    end
 
+end
    # def split_lines(text)
    #   braille_that_is_stacked = write_braille(text)
    #   if braille_that_is_stacked.length < 40
@@ -73,4 +80,3 @@ class Dictionary
    #     end
    #   return_braille
    # end
- end
