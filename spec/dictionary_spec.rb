@@ -50,5 +50,10 @@ RSpec.describe Dictionary do
         end
  end
 
+      it 'can convert braille to english' do
+        expect(@dictionary.deconstructor("0.....")).to eq('a')
+      end 
+
+
 end
 #{}"helloworldhelloworldhelloworldhelloworldhello world"

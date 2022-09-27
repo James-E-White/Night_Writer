@@ -30,7 +30,7 @@ class Dictionary
     "z" => "0..000",
     " " => "......"
      }
-   @braille_to_english_alphabet = alphabet.invert
+   @deconstructor = alphabet.invert
   end
 
 
@@ -61,11 +61,17 @@ class Dictionary
        while row1.length > 0
         stacked_braille += (row1.shift(20).join + "\n" + row2.shift(20).join + "\n" + row3.shift(20).join)
         stacked_braille += "\n" if row1.length > 0
+
        end
 
      stacked_braille
-
    end
 
+   def deconstructor(character)
+    @alphabet.invert.map do |letter, braille|
+      require "pry";binding.pry
+      return letter if character == braille
+    end
+  end
+
 end
-   
