@@ -54,8 +54,4 @@ RSpec.describe Dictionary do
    expect(@dictionary.deconstructor"0.0...").to eq('b')
    expect(@dictionary.deconstructor".000..").to eq('j')
     end
-
-  xit 'can convert two braille words to english' do
-    expect(@dictionary.deconstructor"00.00.","0..00.").to eq('n','o')
- end
 end
