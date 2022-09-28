@@ -65,12 +65,12 @@ class Dictionary
        end
 
      stacked_braille
-   end
+  end
 
    def deconstructor(character)
      write_english = ""
      convert_braille(character)
-    @alphabet.invert.map do |braille, letter|
+     @alphabet.invert.map do |braille, letter|
       return letter if character == braille
 
      end
@@ -78,10 +78,12 @@ class Dictionary
 
    def convert_braille(text)
       x = []
-     text.split.map do |row|
-       x << row.slice(0..1)
-       
-       require "pry";binding.pry
+      index = 0
+      text.split.map do |row|
+       x << row.split("\n").slice!(index..(index+1))
+
+
+
 
      end
    end
