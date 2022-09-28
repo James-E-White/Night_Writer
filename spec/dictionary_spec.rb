@@ -1,5 +1,4 @@
 require './lib/dictionary'
-require './lib/translator'
 require 'simplecov'
 RSpec.describe Dictionary do
   before(:each) do
@@ -47,35 +46,16 @@ RSpec.describe Dictionary do
 0....00.0.0.00
 .0..00.0000..0
 0....00.0.0..."
-        expect(@dictionary.write_braille("hello world hello world hello world hello world hello world hello world hello world hello world hello world")).to eq(expected)
-        end
+  expect(@dictionary.write_braille("hello world hello world hello world hello world hello world hello world hello world hello world hello world")).to eq(expected)
+    end
  end
 
-      it 'can convert braille to english' do
-      expect(@dictionary.deconstructor"0.0...").to eq('b')
+  it 'can convert braille to english' do
+   expect(@dictionary.deconstructor"0.0...").to eq('b')
+   expect(@dictionary.deconstructor".000..").to eq('j')
+    end
 
-     end
+  xit 'can convert two braille words to english' do
+    expect(@dictionary.deconstructor"00.00.","0..00.").to eq('n','o')
  end
-
-#         expect(@dictionary.deconstructor("0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.
-# 00.00.0..0..00.0000..0..00.00.0..0..00.0
-# ....0.0.0....00.0.0.........0.0.0....00.
-# 0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.
-# 000..0..00.00.0..0..00.0000..0..00.00.0.
-# 0.0.........0.0.0....00.0.0.........0.0.
-# 0....00.0.0.00..0.0.0.0.0....00.0.0.00..
-# .0..00.0000..0..00.00.0..0..00.0000..0..
-# 0....00.0.0.........0.0.0....00.0.0.....
-# 0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.
-# 00.00.0..0..00.0000..0..00.00.0..0..00.0
-# ....0.0.0....00.0.0.........0.0.0....00.
-# 0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.
-# 000..0..00.00.0..0..00.0000..0..00.00.0.
-# 0.0.........0.0.0....00.0.0.........0.0.
-# 0....00.0.0.00
-# .0..00.0000..0
-# 0....00.0.0...")).to eq("hello world hello world hello world hello world hello world hello world hello world hello world hello world")
-#       end
-
-
-#{}"helloworldhelloworldhelloworldhelloworldhello world"
+end

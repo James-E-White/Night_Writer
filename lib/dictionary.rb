@@ -1,8 +1,8 @@
 class Dictionary
   attr_reader :alphabet
   def initialize
-    #@word = word.downcase
-    @alphabet = {'a' => "0.....",
+  @alphabet = {
+    'a' => "0.....",
     'b' => "0.0...",
     'c' => "00....",
     "d" => "00.0..",
@@ -44,7 +44,7 @@ class Dictionary
       end
      end
     end
-    words
+   words
   end
 
   def write_braille(text)
