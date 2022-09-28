@@ -30,7 +30,7 @@ class Dictionary
     "z" => "0..000",
     " " => "......"
      }
-
+   @deconstructor = alphabet.invert
   end
 
 
@@ -61,22 +61,30 @@ class Dictionary
        while row1.length > 0
         stacked_braille += (row1.shift(20).join + "\n" + row2.shift(20).join + "\n" + row3.shift(20).join)
         stacked_braille += "\n" if row1.length > 0
+
        end
 
      stacked_braille
-     
+  end
+
+   def deconstructor(character)
+     write_english = ""
+     convert_braille(character)
+     @alphabet.invert.map do |braille, letter|
+      return letter if character == braille
+
+     end
    end
 
+   def convert_braille(text)
+      x = []
+      index = 0
+      text.split.map do |row|
+       x << row.split("\n").slice!(index..(index+1))
+
+
+
+
+     end
+   end
 end
-   # def split_lines(text)
-   #   braille_that_is_stacked = write_braille(text)
-   #   if braille_that_is_stacked.length < 40
-   #     return braille_that_is_stacked
-   #   else
-   #
-   #
-   #     # split_lines.map do |divide|
-   #       @braille << lines.split("")
-   #     end
-   #   return_braille
-   # end
